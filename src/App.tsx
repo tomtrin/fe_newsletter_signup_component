@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <main>
+      <main className='flex justify-center items-center h-screen bg-charcoal-grey font-roboto'>
         <Signup/>
       </main>
     </>

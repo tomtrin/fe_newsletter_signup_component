@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,10 +7,13 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-              'x': ['x', 'Helvetica']
+              'roboto': ['Roboto', 'Helvetica']
             },
             colors: {
-
+                'tomato': 'hsl(4, 100%, 67%)',
+                'dark-slate-grey': 'hsl(234, 29%, 20%)',
+                'charcoal-grey': 'hsl(235, 18%, 26%)',
+                'grey': 'hsl(231, 7%, 60%)',
             },
         },
     },
