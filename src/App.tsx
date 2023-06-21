@@ -1,14 +1,13 @@
-import Signup from './components/Signup/Signup'
+import Signup from "./components/Signup/Signup";
 
 function App() {
-
   return (
     <>
-      <main className='flex justify-center items-center h-screen bg-charcoal-grey font-roboto'>
-        <Signup/>
+      <main className='flex h-screen items-center justify-center font-roboto'>
+        <Signup />
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
