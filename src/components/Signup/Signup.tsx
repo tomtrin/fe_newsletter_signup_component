@@ -1,4 +1,3 @@
-import React from "react";
 import signupImgDesktop from "../../assets/images/illustration-sign-up-desktop.svg";
 import signupImgMobile from "../../assets/images/illustration-sign-up-mobile.svg";
 import checkmark from "../../assets/images/icon-list.svg";
