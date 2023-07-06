@@ -77,6 +77,19 @@ describe('SignupMain', () => {
       const header = await screen.findByText("Stay updated!")
       expect(header).not.toBeNull()
     });
+
+    it('should remove error message when user edits email field', async () => {
+      const emailInput = screen.getByRole("textbox");
+      await userEvent.type(emailInput, "test@example.c");
+      await userEvent.tab()
+
+      let errorMessage = await screen.findByText("Valid email required");
+      expect(errorMessage).toHaveClass("block")
+
+      await userEvent.type(emailInput, "changeme");
+      errorMessage = await screen.findByText("Valid email required");
+      expect(errorMessage).toHaveClass("hidden")
+    });
   });
 
   describe('when valid email entered', () => {
@@ -91,6 +104,20 @@ describe('SignupMain', () => {
 
       const errorMessage = await screen.findByText("Valid email required");
       expect(errorMessage).toHaveClass("hidden")
+    });
+  });
+
+  describe('when no email entered', () => {
+    beforeEach( () => {
+      render(<SignupMain/>)
+    })
+
+    it('should display error message', async () => {
+      const submitButton = screen.getByRole("button");
+      await userEvent.click(submitButton);
+
+      const errorMessage = await screen.findByText("Valid email required");
+      expect(errorMessage).toHaveClass("block")
     });
   });
 

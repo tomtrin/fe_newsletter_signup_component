@@ -30,8 +30,12 @@ function SignupForm(props: SignupFormProps) {
     }
   }
 
-  const emailChangeHandler = () => {
+  const emailBlurHandler = () => {
     validateEmail(emailInput.current?.value)
+  }
+
+  const emailChangeHandler = () => {
+    setValidEmail(true);
   }
 
   return (
@@ -67,6 +71,7 @@ function SignupForm(props: SignupFormProps) {
               ref={emailInput}
               placeholder={"email@company.com"}
               pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+              onBlur={emailBlurHandler}
               onChange={emailChangeHandler}
               className={`rounded-lg border-2 border-solid border-grey/50 p-4 ${!validEmail ? "border-red-500 bg-red-100 text-red-500" : ""}`}
             ></input>
