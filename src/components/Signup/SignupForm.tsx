@@ -1,7 +1,7 @@
 import signupImgDesktop from "../../assets/images/illustration-sign-up-desktop.svg";
 import signupImgMobile from "../../assets/images/illustration-sign-up-mobile.svg";
 import checkmark from "../../assets/images/icon-list.svg";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 interface SignupFormProps {
   onSubscribe: (email: string) => void;
@@ -9,18 +9,33 @@ interface SignupFormProps {
 
 function SignupForm(props: SignupFormProps) {
   const emailInput = useRef<HTMLInputElement | null>(null);
+  const [validEmail, setValidEmail] = useState<boolean>(true);
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const email = emailInput.current?.value;
-
-    if (email) {
+    const email = emailInput.current?.value
+    const isValid = validateEmail(email);
+    if (email && isValid) {
       props.onSubscribe(email);
     }
   };
 
+  const validateEmail = (email:string | undefined) => {
+    if(email && email.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/)) {
+      setValidEmail(true);
+      return true
+    } else {
+      setValidEmail(false);
+      return false
+    }
+  }
+
+  const emailChangeHandler = () => {
+    validateEmail(emailInput.current?.value)
+  }
+
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} noValidate>
       <div className='flex max-w-2xl flex-col-reverse bg-white p-0 sm:rounded-3xl lg:h-auto lg:max-w-4xl lg:flex-row lg:p-6'>
         <div className='min-h-1/2 flex max-w-md flex-col gap-6 px-8 py-8 lg:my-10 lg:max-w-md'>
           <h1 className='text-5xl font-bold'>Stay updated!</h1>
@@ -40,13 +55,23 @@ function SignupForm(props: SignupFormProps) {
             </div>
           </div>
           <div className='mt-4 flex flex-col space-y-2'>
-            <label className='font-bold'>Email address</label>
+            <div className="flex">
+              <label className='font-bold'>
+                <span>Email address</span>
+              </label>
+              <span className="flex-auto"/>
+              <span className={` ${!validEmail ? "block text-red-500": "hidden"}`}>Valid email required</span>
+            </div>
             <input
               type='email'
               ref={emailInput}
               placeholder={"email@company.com"}
-              className='rounded-lg border-2 border-solid border-grey p-4'
+              pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+              onChange={emailChangeHandler}
+              className={`rounded-lg border-2 border-solid border-grey/50 p-4 ${!validEmail ? "border-red-500 bg-red-100 text-red-500" : ""}`}
             ></input>
+            <div>
+            </div>
           </div>
           <button
             type='submit'
