@@ -1,10 +1,10 @@
-import Signup from "./components/Signup/Signup";
+import SignupMain from "./components/Signup/SignupMain";
 
 function App() {
   return (
     <>
       <main className='flex h-screen items-center justify-center font-roboto'>
-        <Signup />
+        <SignupMain />
       </main>
     </>
   );
