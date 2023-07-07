@@ -58,7 +58,7 @@ Users should be able to:
 ### Useful resources
 
 - [https://hung.dev/posts/jest-vite](https://hung.dev/posts/jest-vite) - This blog post helped me set up @swc/jest in the project for unit testing
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [template-configs](https://github.com/tomtrin/template-configs) - Project I created to help install tailwind & unit testing dependencies / config files to my Vite + Typescript based React projects.
 
 
 ## Author
