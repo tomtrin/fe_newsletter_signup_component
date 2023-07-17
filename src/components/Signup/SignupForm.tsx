@@ -41,8 +41,8 @@ function SignupForm(props: SignupFormProps) {
   return (
     <form onSubmit={submitHandler} noValidate>
       <div className='flex max-w-2xl flex-col-reverse bg-white p-0 sm:rounded-3xl lg:h-auto lg:max-w-4xl lg:flex-row lg:p-6'>
-        <div className='min-h-1/2 flex max-w-md flex-col gap-6 px-8 py-8 lg:my-10 lg:max-w-md'>
-          <h1 className='text-5xl font-bold'>Stay updated!</h1>
+        <div className='min-h-1/2 flex max-w-md justify-center flex-col gap-6 px-8 py-8 lg:max-w-md'>
+          <h1 className='text-5xl font-bold lg:text-6xl'>Stay updated!</h1>
           <div>Join 60,000+ product managers receiving monthly updates on:</div>
           <div>
             <div className='flex space-x-4 py-1'>
